@@ -71,7 +71,7 @@ func (p *Plain) Format(rec *logr.LogRec, level logr.Level, buf *bytes.Buffer) (*
 
 	timestampFmt := p.TimestampFormat
 	if timestampFmt == "" {
-		timestampFmt = logr.DefTimestampFormat
+		timestampFmt = logr.TimestampShortFormat
 	}
 
 	color := logr.NoColor
@@ -79,17 +79,15 @@ func (p *Plain) Format(rec *logr.LogRec, level logr.Level, buf *bytes.Buffer) (*
 		color = level.Color
 	}
 
-	if !p.DisableLevel {
-		_ = logr.WriteWithColor(buf, level.DisplayName, color)
-		buf.WriteString(delim)
-	}
-
 	if !p.DisableTimestamp {
 		var arr [128]byte
 		tbuf := rec.Time().AppendFormat(arr[:0], timestampFmt)
-		buf.WriteByte('[')
-		buf.Write(tbuf)
-		buf.WriteByte(']')
+		_ = logr.WriteWithColor(buf, string(tbuf), logr.DarkGray)
+		buf.WriteString(delim)
+	}
+
+	if !p.DisableLevel {
+		_ = logr.WriteWithColor(buf, level.DisplayName, color)
 		buf.WriteString(delim)
 	}
 
@@ -117,7 +115,7 @@ func (p *Plain) Format(rec *logr.LogRec, level logr.Level, buf *bytes.Buffer) (*
 	}
 
 	if len(fields) > 0 {
-		if err := logr.WriteFields(buf, fields, logr.Space, color); err != nil {
+		if err := logr.WriteFields(buf, fields, logr.Space, logr.DarkGray); err != nil {
 			return nil, err
 		}
 	}

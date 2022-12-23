@@ -7,14 +7,15 @@ var AnsiColorSuffix = []byte("m")
 type Color uint8
 
 const (
-	NoColor Color = 0
-	Red     Color = 31
-	Green   Color = 32
-	Yellow  Color = 33
-	Blue    Color = 34
-	Magenta Color = 35
-	Cyan    Color = 36
-	White   Color = 37
+	NoColor  Color = 0
+	Red      Color = 31
+	Green    Color = 32
+	Yellow   Color = 33
+	Blue     Color = 34
+	Magenta  Color = 35
+	Cyan     Color = 36
+	White    Color = 37
+	DarkGray Color = 90
 )
 
 // LevelID is the unique id of each level.

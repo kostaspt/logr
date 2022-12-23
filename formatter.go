@@ -5,6 +5,7 @@ import (
 	"io"
 	"runtime"
 	"strconv"
+	"time"
 )
 
 // Formatter turns a LogRec into a formatted string.
@@ -25,6 +26,9 @@ const (
 
 	// TimestampMillisFormat is the format for logging milliseconds UTC
 	TimestampMillisFormat = "Jan _2 15:04:05.000"
+
+	// TimestampShortFormat is the format for logging hours and minutes
+	TimestampShortFormat = time.Kitchen
 )
 
 type Writer struct {
