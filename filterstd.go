@@ -55,17 +55,17 @@ func (lt StdFilter) IsStacktraceEnabled(level Level) bool {
 
 var (
 	// Panic is the highest level of severity.
-	Panic = Level{ID: 0, Name: "panic", Color: Red}
+	Panic = Level{ID: 0, Name: "panic", DisplayName: "PNC", Color: Red}
 	// Fatal designates a catastrophic error.
-	Fatal = Level{ID: 1, Name: "fatal", Color: Red}
+	Fatal = Level{ID: 1, Name: "fatal", DisplayName: "FTL", Color: Red}
 	// Error designates a serious but possibly recoverable error.
-	Error = Level{ID: 2, Name: "error", Color: Red}
+	Error = Level{ID: 2, Name: "error", DisplayName: "ERR", Color: Red}
 	// Warn designates non-critical error.
-	Warn = Level{ID: 3, Name: "warn", Color: Yellow}
+	Warn = Level{ID: 3, Name: "warn", DisplayName: "WRN", Color: Red}
 	// Info designates information regarding application events.
-	Info = Level{ID: 4, Name: "info", Color: Cyan}
+	Info = Level{ID: 4, Name: "info", DisplayName: "INF", Color: Green}
 	// Debug designates verbose information typically used for debugging.
-	Debug = Level{ID: 5, Name: "debug", Color: NoColor}
+	Debug = Level{ID: 5, Name: "debug", DisplayName: "DBG", Color: Yellow}
 	// Trace designates the highest verbosity of log output.
-	Trace = Level{ID: 6, Name: "trace", Color: NoColor}
+	Trace = Level{ID: 6, Name: "trace", DisplayName: "TRC", Color: Magenta}
 )

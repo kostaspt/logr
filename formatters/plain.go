@@ -80,11 +80,7 @@ func (p *Plain) Format(rec *logr.LogRec, level logr.Level, buf *bytes.Buffer) (*
 	}
 
 	if !p.DisableLevel {
-		_ = logr.WriteWithColor(buf, level.Name, color)
-		count := len(level.Name)
-		if p.MinLevelLen > count {
-			_, _ = buf.WriteString(strings.Repeat(" ", p.MinLevelLen-count))
-		}
+		_ = logr.WriteWithColor(buf, level.DisplayName, color)
 		buf.WriteString(delim)
 	}
 
